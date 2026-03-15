@@ -2,9 +2,7 @@
 
 This repository demonstrates SQL queries from basic to advanced, including logical operators, aggregates, and joins. Using Mode, PostgreSQL and DBeaver for queries and database management.
 
-Note: These queries were written using the Mode Analytics public SQL
-training warehouse. The tables (like `tutorial.*`) are available in
-their online SQL environment.
+Note: These queries were written using the Mode Analytics public SQL training warehouse. The tables (like `tutorial.*`) are available in their online SQL environment.
 
 **Databases used so far:**
 - `tutorial.us_housing_units` – US housing data  
