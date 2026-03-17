@@ -55,6 +55,15 @@ GROUP BY year
 ORDER BY year;
 
 
+-- Write a query to calculate the average opening price
+-- without using the AVG formula ()
+
+SELECT COUNT(aapl.open) AS total_count,
+       SUM(aapl.open) AS total_price,
+       SUM(aapl.open) / COUNT(aapl.open) AS manual_avg_open_price
+       AVG(aapl.open) AS formula_avg_open_price
+FROM tutorial.aapl_historical_stock_price aapl
+
 
 -- ---------------------------------------------------------
 -- Monthly price range
@@ -69,3 +78,20 @@ SELECT year,
 FROM tutorial.aapl_historical_stock_price
 GROUP BY year, month
 ORDER BY year, month;
+
+
+-- What was the highest single-day increase in Apple's share 
+-- value?
+
+SELECT MAX(aapl.close - aapl.open) AS maximum_daily_share_increase
+FROM tutorial.aapl_historical_stock_price aapl -- This is the simplest way to do it, but...
+
+-- OR...
+
+SELECT aapl.open AS open_share_price,
+       aapl.close AS close_share_price,
+       aapl.close - aapl.open AS daily_share_increase
+FROM tutorial.aapl_historical_stock_price aapl
+WHERE aapl.open IS NOT NULL and aapl.close IS NOT NULL
+ORDER BY daily_share_increase DESC
+LIMIT 1; -- This is more visual, without writing a subquery

@@ -113,3 +113,22 @@ SELECT *
 FROM tutorial.billboard_top_100_year_end
 WHERE group_name ILIKE '%Dr. Dre%'
 AND year NOT BETWEEN 2000 AND 2009;
+
+
+
+-- ---------------------------------------------------------
+-- COUNT operator
+-- ---------------------------------------------------------
+-- Write a query that determines counts of every single 
+-- column. With these counts, can you tell which column has 
+-- the most null values?
+
+SELECT COUNT(aapl.date) AS date_count,
+       COUNT(aapl.year) AS year_count,
+       COUNT(aapl.month) AS month_count,
+       COUNT(aapl.open) AS open_count,
+       COUNT(aapl.high) AS high_count,
+       COUNT(aapl.low) AS low_count,
+       COUNT(aapl.close) AS close_count,
+       COUNT(aapl.volume) AS volume_count
+FROM tutorial.aapl_historical_stock_price as aapl
