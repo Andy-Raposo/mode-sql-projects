@@ -17,6 +17,7 @@
 -- =========================================================
 
 
+
 -- ---------------------------------------------------------
 -- Inspect dataset
 -- ---------------------------------------------------------
@@ -95,3 +96,26 @@ FROM tutorial.aapl_historical_stock_price aapl
 WHERE aapl.open IS NOT NULL and aapl.close IS NOT NULL
 ORDER BY daily_share_increase DESC
 LIMIT 1; -- This is more visual, without writing a subquery
+
+
+
+-- ---------------------------------------------------------
+-- HAVING clause
+-- ---------------------------------------------------------
+-- Find all years where the average closing price was above 
+-- $500 and the total traded volume was at least 500,000,000.
+-- Also, include a “classification” column that labels the 
+-- year as 'High Activity' if the total volume was above 
+-- 1,000,000,000, otherwise 'Moderate Activity'.
+
+SELECT aapl.year,
+       AVG(aapl.close) AS close_avg_price,
+       SUM(aapl.volume) AS total_traded_volume,
+       CASE
+         WHEN SUM(aapl.volume) > 1000000000 THEN 'High Activity'
+         ELSE 'Moderate Activity'
+       END AS activity_classification
+FROM tutorial.aapl_historical_stock_price aapl
+GROUP BY 1
+HAVING AVG(aapl.close) > 500 AND SUM(aapl.volume) >= 500000000
+ORDER BY 1
