@@ -119,3 +119,7 @@ FROM tutorial.aapl_historical_stock_price aapl
 GROUP BY 1
 HAVING AVG(aapl.close) > 500 AND SUM(aapl.volume) >= 500000000
 ORDER BY 1
+
+-- NOTE: HAVING clause is very important since WHERE
+-- clauses filter before grouping, and that wouldn't allow
+-- to filter based on aggregate functions.

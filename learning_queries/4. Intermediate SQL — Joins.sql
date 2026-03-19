@@ -86,3 +86,4 @@ JOIN benn.college_football_teams t
     ON p.school_name = t.school_name
 GROUP BY year, month
 ORDER BY year, month DESC;
+
