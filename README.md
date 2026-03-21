@@ -2,7 +2,7 @@
 
 This repository documents my progression in SQL, from basic queries to more advanced concepts such as joins, aggregations, and conditional logic.
 
-The queries were written using Mode Analytics’ public SQL training warehouse and executed with PostgreSQL and DBeaver.
+The queries were written using Mode Analytics’ public SQL training warehouse and executed with PostgreSQL and DBeaver. Each file corresponds to a lesson or case study on the Mode platform that I have adapted, extended, and worked locally with, applying the concepts in real-world datasets.
 
 ---
 
