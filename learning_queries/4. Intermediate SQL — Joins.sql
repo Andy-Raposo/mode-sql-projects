@@ -1,19 +1,7 @@
 -- =========================================================
--- Aggregate Functions
+-- Joins
 -- Dataset: tutorial.aapl_historical_stock_price
 --
--- These queries are part of the Intermediate SQL section
--- of the Mode Analytics SQL tutorial. The dataset contains
--- historical daily stock price data for Apple Inc.
---
--- The table includes information such as opening price,
--- closing price, trading volume, and daily high/low values.
--- Using aggregate functions allows us to summarize this
--- daily data into meaningful monthly or yearly statistics.
---
--- These queries can be executed using PostgreSQL via the
--- PSQL command line interface or through GUI tools such as
--- DBeaver.
 -- =========================================================
 
 
