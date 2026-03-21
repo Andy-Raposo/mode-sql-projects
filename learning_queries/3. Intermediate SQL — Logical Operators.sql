@@ -29,6 +29,45 @@ FROM tutorial.aapl_historical_stock_price;
 
 
 -- ---------------------------------------------------------
+-- DISTINCT Operator
+-- ---------------------------------------------------------
+-- This is a simple operator to find only unique values in
+-- a column, and to find it, I'll simply write a query that 
+-- returns the unique values in the year column, in 
+-- chronological order.
+
+SELECT DISTINCT year 
+FROM tutorial.aapl_historical_stock_price
+ORDER BY year;
+
+-- This is particularly useful to explore the data without
+-- leaving the SQL environment, especially within 
+-- preliminary queries.
+
+
+-- ---------------------------------------------------------
+-- Write a query that counts the number of unique values in 
+-- the month column for each year.
+
+SELECT year,
+       COUNT(DISTINCT month) AS month_count
+FROM tutorial.aapl_historical_stock_price
+GROUP BY 1
+ORDER BY 1
+
+
+-- ---------------------------------------------------------
+-- Write a query that separately counts the number of unique 
+-- values in the month column and the number of unique 
+-- values in the `year` column.
+
+SELECT COUNT(DISTINCT year) AS year_count,
+       COUNT(DISTINCT month) AS month_count
+FROM tutorial.aapl_historical_stock_price
+ORDER BY 1, 2
+
+
+-- ---------------------------------------------------------
 -- Monthly trading volume
 -- ---------------------------------------------------------
 -- Calculate the total number of shares traded each month.
