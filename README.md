@@ -46,7 +46,7 @@ These exercises are based on datasets from Mode Analytics' SQL tutorial environm
 
 ---
 
-## Purpose/Goals
+## Purpose
 
 The goal of this repository is to:
 
