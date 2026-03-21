@@ -6,6 +6,14 @@ The queries were written using Mode Analytics’ public SQL training warehouse a
 
 ---
 
+## Workflow & Tools
+
+- All queries were written and tested in PostgreSQL and DBeaver  
+- Managed project files using VS Code and Git for version control  
+- Data exploration, query testing, and results replication were done locally to ensure reproducibility
+
+---
+
 ## Repository Structure
 
 - **`databases/`**
