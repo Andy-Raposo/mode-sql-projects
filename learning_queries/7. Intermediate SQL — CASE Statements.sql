@@ -45,7 +45,7 @@ FROM benn.college_football_players
 -- ---------------------------------------------------------
 -- CASE statements — aggregate functions
 -- ---------------------------------------------------------
--- Write a query that counts the number of 300lb+ players 
+-- Write a query that counts the number of 150kgs+ players 
 -- for each of the following regions: A, OR, WA or Other 
 -- (everywhere else).
 
@@ -55,14 +55,39 @@ SELECT CASE WHEN state = 'CA' THEN 'CA'
             ELSE 'OTHER' END AS state,
             COUNT(1) AS count
 FROM benn.college_football_players 
+WHERE weight * 0.45359237 > 150
 GROUP BY 1
 
+-- An important thing to also know is that there may be
+-- situations where we may want to do a "PIVOT TABLE" like
+-- in Excel; to do that, we can simply change the structure
+-- and display the rows, as, effectively, as columns with
+-- the COUNT functions and dropping the GROUP BY.
 
--- Query that returns all rows for which someone named John 
--- was a member of the group.
+SELECT COUNT(CASE WHEN state = 'CA' THEN 1 ELSE NULL END) AS cali_count,
+       COUNT(CASE WHEN state = 'OR' THEN 1 ELSE NULL END) AS oregon_count,
+       COUNT(CASE WHEN state = 'WA' THEN 1 ELSE NULL END) AS washington_count,
+       COUNT(CASE WHEN state NOT IN ('CA', 'OR', 'WA') THEN 1 ELSE NULL END) AS other_count
+FROM benn.college_football_players
+WHERE weight * 0.45359237 > 150
+
+
+-- ---------------------------------------------------------
+-- Another test: A query that returns all rows for which 
+-- someone named John was a member of the group.
 
 SELECT full_school_name,
-       SUM(CASE WHEN player_name ILIKE '%John%' THEN 1 ELSE 0 END) AS john_count
+       SUM(CASE WHEN player_name ILIKE 'John%' THEN 1 ELSE 0 END) AS john_count
 FROM benn.college_football_players
 GROUP BY 1
 ORDER BY 2 DESC;
+
+
+-- ---------------------------------------------------------
+-- And another one! A query that returns the count of 
+-- schools based on if they start by the A-M letters, or the
+-- N-Z letters.
+
+SELECT COUNT(CASE WHEN LOWER(school_name) <= 'm' THEN 1 ELSE NULL END) AS schools_a_to_m,
+       COUNT(CASE WHEN LOWER(school_name) >='n' THEN 1 ELSE NULL END) AS schools_n_to_z
+FROM benn.college_football_players
